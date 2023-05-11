@@ -1,4 +1,5 @@
-### Hi there 👋
+![visitors](https://visitor-badge.glitch.me/badge?page_id=codesbyshrey.visitor-badge&left_color=green&right_color=red)
+### Howdy 👋
 
 - 🔭 I’m currently working on ... my portfolio and Leetcode :)
 - 🌱 I’m currently learning ... AWS Cloud Certification (studying w/ my dad!)
