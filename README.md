@@ -10,5 +10,5 @@
   - Capstone Project, RPI 2019
 
 <!--**codesbyshrey/codesbyshrey** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.-->
-![Leetcode Stats](https://leetcard.jacoblin.cool/codesbyshrey)
+
 ![Leetcode Stats](https://leetcard.jacoblin.cool/codesbyshrey?ext=heatmap)
