@@ -9,6 +9,9 @@
 - I have a patent! Check it out here: https://www.freepatentsonline.com/y2022/0202583.html
   - Capstone Project, RPI 2019
 
-<!--**codesbyshrey/codesbyshrey** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.-->
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=codesbyshrey&show_icons=true&theme=city_lights)](https://github.com/anuraghazra/github-readme-stats)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=codesbyshrey&layout=compact&theme=city_lights)](https://github.com/anuraghazra/github-readme-stats)
 
 ![Leetcode Stats](https://leetcard.jacoblin.cool/codesbyshrey?ext=heatmap)
