@@ -1,4 +1,4 @@
-<!-- how come you're looking at the RAW code on Github? Cheeky :)  -->
+<!-- nice to see you down here in RAW code land :)  -->
 ### Howdy 👋
 
 - 🔭 I’m currently working on ... my portfolio and Leetcode :)
