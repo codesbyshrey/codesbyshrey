@@ -4,6 +4,7 @@
 <details close>
      <summary> Technologies </summary>
      <p> Django (Python), PostgreSQL </p>
+     <p> AWS Elastic Beanstalk </p>
 </details>
 
 ## Front End Work
