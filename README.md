@@ -6,6 +6,8 @@
 - 💬 Ask me about ... biomechanics, healthcare, patient outcomes, systems
 - 📫 How to reach me: ... @picsbyshrey on Twitter or Instagram
 - ⚡ Fun fact: ... I'm a former EMT and competitive D3 XC/TF runner!
+
+
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
  - Certified Cloud Practitioner
  - Certified Developer Associate
