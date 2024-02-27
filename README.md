@@ -8,9 +8,7 @@
 - ⚡ Fun fact: ... I'm a former EMT and competitive D3 XC/TF runner!
 
 
-![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
- - Certified Cloud Practitioner
- - Certified Developer Associate
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) || Cloud Practitioner || Developer Associate
 
 - I have a patent! Check it out here: https://www.freepatentsonline.com/y2022/0202583.html
   - Capstone Project, RPI 2019
