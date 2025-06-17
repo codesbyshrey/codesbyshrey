@@ -13,5 +13,28 @@ Benjamin Franklin said:
 
 <details close>
   <summary>Technologies</summary>
-  <p>...blah</p>
+  <p>...blah</p> ok what if I just write stuff 
+  <p> what else to add </p>
 </details>
+
+**star star bold text or underscore double on each side**
+
+*_italics_* 
+
+<mark> highlight </mark>
+<sup>2</sup> <sub>4</sub>
+`monospace font` 
+```js
+const a = 10
+  let y = 10
+```
+```py
+const a = 10
+  let y = 10
+```
+[My Substack!](practiceintuition.substack.com)
+
+Can always used unordered or ordered lists
+ - list 1
+ - list 2
+ - list 3
