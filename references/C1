@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciousness Theories Interactive Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #e0e6ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #64b5f6, #42a5f5, #1e88e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(100, 181, 246, 0.2);
+            border: 2px solid #64b5f6;
+            border-radius: 25px;
+            color: #64b5f6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(100, 181, 246, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 181, 246, 0.3);
+        }
+
+        .theories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .theory-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #64b5f6, #42a5f5, #1e88e5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .theory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(100, 181, 246, 0.2);
+            border-color: #64b5f6;
+        }
+
+        .theory-card:hover::before {
+            opacity: 1;
+        }
+
+        .theory-title {
+            font-size: 1.4em;
+            color: #64b5f6;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .theory-domain {
+            font-size: 0.9em;
+            color: #a1c4fd;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .theory-description {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .theory-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            background: rgba(100, 181, 246, 0.2);
+            border-radius: 15px;
+            font-size: 0.8em;
+            color: #64b5f6;
+            border: 1px solid rgba(100, 181, 246, 0.3);
+        }
+
+        .intersection-marker {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4caf50;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .connections-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .connections-title {
+            font-size: 1.8em;
+            color: #64b5f6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .connection-item {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .connection-title {
+            font-size: 1.2em;
+            color: #4caf50;
+            margin-bottom: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .advanced-concepts {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 193, 7, 0.1));
+            border-color: #ffa726;
+        }
+
+        .advanced-concepts .theory-title {
+            color: #ffa726;
+        }
+
+        .traditional-theory {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(142, 36, 170, 0.1));
+            border-color: #ab47bc;
+        }
+
+        .traditional-theory .theory-title {
+            color: #ab47bc;
+        }
+
+        .emerging-theory {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(67, 160, 71, 0.1));
+            border-color: #66bb6a;
+        }
+
+        .emerging-theory .theory-title {
+            color: #66bb6a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Consciousness Theories & Interdisciplinary Intersections</h1>
+            <p class="subtitle">Mapping the current landscape of consciousness research across philosophy, neuroscience, biology, and embodied cognition</p>
+            
+            <div class="controls">
+                <button class="filter-btn active" data-filter="all">All Theories</button>
+                <button class="filter-btn" data-filter="criticality">Criticality & Complexity</button>
+                <button class="filter-btn" data-filter="embodied">Embodied Cognition</button>
+                <button class="filter-btn" data-filter="traditional">Traditional Approaches</button>
+                <button class="filter-btn" data-filter="emerging">Emerging Theories</button>
+            </div>
+        </header>
+
+        <section class="theories-grid" id="theoriesGrid">
+            <!-- Traditional Theories -->
+            <div class="theory-card traditional-theory" data-category="traditional">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Global Workspace Theory (GWT)</h3>
+                <p class="theory-domain">Cognitive Science • Neuroscience</p>
+                <p class="theory-description">Consciousness arises from global information integration across distributed brain networks. Information becomes conscious when it's broadcast widely enough to be accessible to multiple cognitive processes.</p>
+                <div class="theory-tags">
+                    <span class="tag">Information Integration</span>
+                    <span class="tag">Neural Broadcasting</span>
+                    <span class="tag">Access Consciousness</span>
+                </div>
+            </div>
+
+            <div class="theory-card traditional-theory" data-category="traditional">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Integrated Information Theory (IIT)</h3>
+                <p class="theory-domain">Neuroscience • Mathematics • Philosophy</p>
+                <p class="theory-description">Consciousness corresponds to integrated information (Φ) in a system. Higher integration means higher consciousness. Provides mathematical framework for measuring consciousness.</p>
+                <div class="theory-tags">
+                    <span class="tag">Φ (Phi)</span>
+                    <span class="tag">Information Integration</span>
+                    <span class="tag">Mathematical Framework</span>
+                </div>
+            </div>
+
+            <!-- Criticality & Complexity Theories -->
+            <div class="theory-card advanced-concepts" data-category="criticality">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Critical Brain Hypothesis</h3>
+                <p class="theory-domain">Neuroscience • Complex Systems • Physics</p>
+                <p class="theory-description">Consciousness emerges when neural networks operate at the edge of chaos - a critical state between order and disorder. This maximizes information processing capacity and sensitivity to stimuli.</p>
+                <div class="theory-tags">
+                    <span class="tag">Edge of Chaos</span>
+                    <span class="tag">Phase Transitions</span>
+                    <span class="tag">Self-Organization</span>
+                    <span class="tag">Avalanche Dynamics</span>
+                </div>
+            </div>
+
+            <div class="theory-card advanced-concepts" data-category="criticality">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Free Energy Principle & Active Inference</h3>
+                <p class="theory-domain">Neuroscience • Bayesian Statistics • Biology</p>
+                <p class="theory-description">Consciousness emerges from the brain's continuous process of minimizing prediction error. Living systems maintain themselves by constantly updating their models of the world.</p>
+                <div class="theory-tags">
+                    <span class="tag">Predictive Processing</span>
+                    <span class="tag">Bayesian Brain</span>
+                    <span class="tag">Markov Blankets</span>
+                    <span class="tag">Self-Organization</span>
+                </div>
+            </div>
+
+            <!-- Embodied Cognition Theories -->
+            <div class="theory-card emerging-theory" data-category="embodied">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Enactive Cognition</h3>
+                <p class="theory-domain">Philosophy • Neuroscience • Biology</p>
+                <p class="theory-description">Consciousness is not something we have but something we do - it emerges through dynamic interaction between organism and environment. Mind extends beyond the brain into embodied action.</p>
+                <div class="theory-tags">
+                    <span class="tag">Embodied Mind</span>
+                    <span class="tag">Sensorimotor</span>
+                    <span class="tag">Extended Mind</span>
+                    <span class="tag">Autopoiesis</span>
+                </div>
+            </div>
+
+            <div class="theory-card emerging-theory" data-category="embodied">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Fascia & Interoceptive Consciousness</h3>
+                <p class="theory-domain">Biology • Neuroscience • Somatic Studies</p>
+                <p class="theory-description">Consciousness includes awareness of internal bodily states mediated by fascial networks. The fascial system serves as a body-wide sensory organ contributing to conscious experience and embodied cognition.</p>
+                <div class="theory-tags">
+                    <span class="tag">Interoception</span>
+                    <span class="tag">Fascial Networks</span>
+                    <span class="tag">Embodied Awareness</span>
+                    <span class="tag">Proprioception</span>
+                </div>
+            </div>
+
+            <!-- Advanced/Emerging Theories -->
+            <div class="theory-card advanced-concepts" data-category="emerging criticality">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Orchestrated Objective Reduction (Orch-OR)</h3>
+                <p class="theory-domain">Quantum Physics • Neuroscience • Philosophy</p>
+                <p class="theory-description">Consciousness arises from quantum processes in microtubules within neurons. Quantum coherence and collapse create moments of conscious experience through orchestrated quantum computations.</p>
+                <div class="theory-tags">
+                    <span class="tag">Quantum Consciousness</span>
+                    <span class="tag">Microtubules</span>
+                    <span class="tag">Quantum Coherence</span>
+                    <span class="tag">Non-Computability</span>
+                </div>
+            </div>
+
+            <div class="theory-card emerging-theory" data-category="emerging embodied">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Attention Schema Theory</h3>
+                <p class="theory-domain">Neuroscience • Cognitive Science</p>
+                <p class="theory-description">Consciousness is the brain's schematic model of its own attention processes. We become aware of being aware through this self-modeling mechanism.</p>
+                <div class="theory-tags">
+                    <span class="tag">Self-Model</span>
+                    <span class="tag">Attention</span>
+                    <span class="tag">Meta-Cognition</span>
+                    <span class="tag">Social Cognition</span>
+                </div>
+            </div>
+
+            <div class="theory-card advanced-concepts" data-category="criticality emerging">
+                <div class="intersection-marker"></div>
+                <h3 class="theory-title">Temporo-Spatial Theory of Consciousness</h3>
+                <p class="theory-domain">Neuroscience • Philosophy • Physics</p>
+                <p class="theory-description">Consciousness emerges from the brain's intrinsic temporal and spatial neural activity patterns. The continuity of conscious experience reflects underlying neural dynamics across multiple timescales.</p>
+                <div class="theory-tags">
+                    <span class="tag">Neural Dynamics</span>
+                    <span class="tag">Timescales</span>
+                    <span class="tag">Intrinsic Activity</span>
+                    <span class="tag">Temporal Binding</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="connections-section">
+            <h2 class="connections-title">Key Interdisciplinary Intersections</h2>
+            
+            <div class="connection-item">
+                <h3 class="connection-title">Criticality + Embodied Cognition</h3>
+                <p>Critical brain states may be maintained through sensorimotor interactions with the environment. The body's fascial networks might contribute to maintaining optimal neural criticality through continuous proprioceptive feedback loops.</p>
+            </div>
+
+            <div class="connection-item">
+                <h3 class="connection-title">Free Energy Principle + Fascia Research</h3>
+                <p>Fascial mechanoreceptors continuously update the brain's predictive models of body state. This interoceptive prediction error minimization may be fundamental to conscious embodied experience.</p>
+            </div>
+
+            <div class="connection-item">
+                <h3 class="connection-title">IIT + Critical Brain Hypothesis</h3>
+                <p>Integrated information (Φ) may be maximized at critical states where neural networks show optimal connectivity patterns. Criticality provides the substrate for information integration.</p>
+            </div>
+
+            <div class="connection-item">
+                <h3 class="connection-title">Enactive Cognition + Attention Schema Theory</h3>
+                <p>Self-models of attention may emerge through embodied interaction with the world. Our awareness of awareness develops through active exploration and environmental coupling.</p>
+            </div>
+
+            <div class="connection-item">
+                <h3 class="connection-title">Philosophy of Mind + Contemporary Neuroscience</h3>
+                <p>The "hard problem" of consciousness intersects with empirical findings about neural correlates. Current research focuses on bridging the explanatory gap between neural mechanisms and subjective experience.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const theoryCards = document.querySelectorAll('.theory-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                // Filter cards
+                theoryCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category.includes(filter)) {
+                        card.classList.remove('hidden');
+                        card.classList.add('fade-in');
+                    } else {
+                        card.classList.add('hidden');
+                        card.classList.remove('fade-in');
+                    }
+                });
+            });
+        });
+
+        // Add hover effects and animations
+        theoryCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Initialize with fade-in animation
+        window.addEventListener('load', () => {
+            theoryCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
