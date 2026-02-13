@@ -3,29 +3,27 @@
 
 Human Factors Engineer | Biomechanics Specialist | Immersive Interaction Designer
 
-🎓 Education
+🎓 EDUCATION
 
-MS: Human Factors Information Design | Bentley University (2025)
+ - MS: Human Factors Information Design | Bentley University (2025)
 
-AWS Certified Developer Associate | DVA-C02 (2023)
+ - AWS Certified Developer Associate | DVA-C02 (2023) + Cloud Practitioner
 
-Full Stack Development | CodingDojo Certification
+ - Full Stack Development | CodingDojo Certification
 
-BS: Biomedical Engineering | Rensselaer Polytechnic Institute (2019)
+ - BS: Biomedical Engineering | Rensselaer Polytechnic Institute (2019)
 
-💼 Experiences
+💼 EXPERIENCES
 
 Patent Holder (#20220202583) | Modular Glenoid Implant Design
 
-Emergency Medical Technician | Northwest Ambulance (Clinical Care)
+Emergency Medical Technician | Northwest Ambulance (Clinical & Critical Care)
 
-Biomechanics Specialist | Movement Coach & Postural Restoration
+Biomechanics Specialist | Movement Coach & Postural Restoration with Corrective Exercises
 
-YMCA Swim Instructor | Skill acquisition & safety training
+YMCA Swim Instructor | Aquatherapy, Skill Acquisition, Long-Term Athlete Development
 
-Chess Teacher | Strategy & logical framework development
-
-💡 Expression
+💡 EXPRESSION
 
 Bonita Baddies Intelligence System - Optimizing lived experience through space, time, and Self.
 
