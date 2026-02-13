@@ -32,6 +32,7 @@ Clinical Roleplay Sim - LLM-powered conversational UI for medical simulation.
 HapTrek Hiking Biofeedback - Multimodal Arduino-based hiking navigation.
 
 Developing [Practice Intuition]([url](https://practiceintuition.substack.com/))
+
 [Holistic Integration Framework]([url](https://practice-intuition.lovable.app/))
 
 Learning is Unobstructed Self Expression
