@@ -3,25 +3,9 @@
 
 Human Factors Engineer | Biomechanics Specialist | Immersive Interaction Designer
 
-🎓 EDUCATION
+Human-centered product leader with an interdisciplinary background spanning clinical biomechanics, biomedical engineering, and human-factors AI design. Demonstrated ability to make high-stakes decisions under ambiguity, translate complex patient needs to technical action plans, and drive cross-functional teams towards positive clinical outcomes in regulated, high-consequence environments.
 
- - MS: Human Factors Information Design | Bentley University (2025)
-
- - AWS Certified Developer Associate | DVA-C02 (2023) + Cloud Practitioner
-
- - Full Stack Development | CodingDojo Certification
-
- - BS: Biomedical Engineering | Rensselaer Polytechnic Institute (2019)
-
-💼 EXPERIENCES
-
-Patent Holder (#20220202583) | Modular Glenoid Implant Design
-
-Emergency Medical Technician | Northwest Ambulance (Clinical & Critical Care)
-
-Biomechanics Specialist | Movement Coach & Postural Restoration with Corrective Exercises
-
-YMCA Swim Instructor | Aquatherapy, Skill Acquisition, Long-Term Athlete Development
+Brings formalized intuitions from patient care, user research, and human body-brain dynamics – developed across a deliberate journey from biomedical engineering and orthopedic implant design through emergency medicine and clinical rehabilitation, into software development and AI systems. Contributed across the full PDLC: from research and requirements gathering for broad stakeholder ecosystems, through design and strategy for software and physical interfaces, to implementation via physical prototyping and iterative digital development.
 
 💡 EXPRESSION
 
