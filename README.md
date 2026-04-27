@@ -1,25 +1,44 @@
-<!-- nice to see you down here in RAW code land :)  -->
-### Hello! I'm Shreyas 👋
+<!-- nice to see you down here in RAW code land :) -->
+### Hello, I'm Shreyas
 
-Human Factors Engineer | Biomechanics Specialist | Immersive Interaction Designer
+I build at the intersection of human factors, clinical reasoning, embodied interaction, and AI product systems.
 
-Human-centered product leader with an interdisciplinary background spanning clinical biomechanics, biomedical engineering, and human-factors AI design. Demonstrated ability to make high-stakes decisions under ambiguity, translate complex patient needs to technical action plans, and drive cross-functional teams towards positive clinical outcomes in regulated, high-consequence environments.
+BS + MS background, patent inventor, and AWS Certified Developer - Associate. I like turning messy real-world behavior into tools, simulations, and interfaces that feel useful to humans.
 
-Brings formalized intuitions from patient care, user research, and human body-brain dynamics – developed across a deliberate journey from biomedical engineering and orthopedic implant design through emergency medicine and clinical rehabilitation, into software development and AI systems. Contributed across the full PDLC: from research and requirements gathering for broad stakeholder ecosystems, through design and strategy for software and physical interfaces, to implementation via physical prototyping and iterative digital development.
+My GitHub Pages site is the more complete portfolio: [codesbyshrey.github.io](https://codesbyshrey.github.io/)
 
-💡 EXPRESSION
+## Expression
 
-Bonita Baddies Intelligence System - Optimizing lived experience through space, time, and Self.
+### Bonita Intelligence System
 
-Clinical Roleplay Sim - LLM-powered conversational UI for medical simulation.
+An AI wellness intelligence MVP for routing lived experience through time, space, and self.
 
-HapTrek Hiking Biofeedback - Multimodal Arduino-based hiking navigation.
+- [Case study](https://codesbyshrey.github.io/bonita/)
+- [PRD](https://codesbyshrey.github.io/bonita-prd/)
+- [Live build](https://bonita-baddies-wellness-858379987835.us-west1.run.app/)
 
-Developing [Practice Intuition]([url](https://practiceintuition.substack.com/))
+### Clinical Roleplay Simulator
 
-[Holistic Integration Framework]([url](https://practice-intuition.lovable.app/))
+LLM-powered conversational simulation for clinical communication practice and patient-centered training.
 
-Learning is Unobstructed Self Expression
+- [NBME case study](https://codesbyshrey.github.io/NBME-CCS/)
+- [NBME PRD](https://codesbyshrey.github.io/NBME-CCS-PRD/)
+- [Clinical Roleplay PRD](https://codesbyshrey.github.io/clinical-roleplay-prd/)
+
+### HapTrek
+
+A multimodal hiking biofeedback concept using haptics, accelerometer sensing, and embodied navigation.
+
+- [Case study and product brief](https://codesbyshrey.github.io/haptrek/)
+
+### Practice Intuition
+
+A broader space for exploring self-expression, body-brain dynamics, and practical intelligence systems.
+
+- [Practice Intuition writing](https://practiceintuition.substack.com/)
+- [Holistic Integration Framework](https://practice-intuition.lovable.app/)
+- [PI-symbi-grid repository](https://github.com/practiceintuition/PI-symbi-grid)
+
+Learning is unobstructed self-expression.
 
 ![Leetcode Stats](https://leetcard.jacoblin.cool/codesbyshrey?ext=heatmap)
-
