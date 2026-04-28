@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practice Intuition Framework</title>
+  <meta name="description" content="A multidisciplinary integration framework connecting ecological awareness, applied biomechanics, cognitive neuromechanics, and human development." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-2: #334155;
+      --ink: #f8fafc;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --line: #475569;
+      --ecology-a: #22c55e;
+      --ecology-b: #059669;
+      --bio-a: #3b82f6;
+      --bio-b: #0891b2;
+      --neuro-a: #8b5cf6;
+      --neuro-b: #db2777;
+      --gold: #f59e0b;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg), #1e293b, var(--bg));
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 28px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 48px;
+      color: var(--soft);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .topbar a:hover { color: var(--ink); }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.7rem);
+      line-height: 1.03;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .triangle-wrap {
+      margin: 34px auto 48px;
+      max-width: 860px;
+    }
+
+    svg { width: 100%; height: auto; display: block; }
+
+    .node {
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      transform-origin: center;
+    }
+
+    .node:hover { filter: brightness(1.18); }
+
+    .node.active { filter: brightness(1.25); }
+
+    .node-label {
+      pointer-events: none;
+      fill: white;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .bridge {
+      fill: var(--soft);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .panel {
+      background: rgba(30, 41, 59, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    .hidden { display: none; }
+
+    .detail {
+      margin-bottom: 34px;
+      background: linear-gradient(135deg, var(--detail-a), var(--detail-b));
+      border: 0;
+    }
+
+    .detail-head {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .detail-icon {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 auto;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.15);
+      font-size: 28px;
+    }
+
+    .detail h2,
+    .role-detail h2 {
+      margin-bottom: 6px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    .core {
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: rgba(255, 255, 255, 0.84);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .chips {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 1.55rem;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    button {
+      border: 0;
+      color: white;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .role-btn {
+      min-height: 138px;
+      border-radius: 18px;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .role-btn:hover,
+    .role-btn.active {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+      outline: 3px solid rgba(255, 255, 255, 0.58);
+    }
+
+    .role-icon {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .role-detail {
+      margin-bottom: 40px;
+    }
+
+    .tagline {
+      color: var(--soft);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .domain-grid,
+    .application-grid,
+    .triad-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .domain-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .application-grid, .triad-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .domain-card,
+    .application-card,
+    .triad-card {
+      border-radius: 18px;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--card-a), var(--card-b));
+    }
+
+    .domain-card h3,
+    .application-card h3,
+    .triad-card h3 {
+      margin-bottom: 8px;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .domain-card p,
+    .application-card p,
+    .triad-card p {
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .role-heading {
+      margin: 24px 0 14px;
+      font-size: 1.1rem;
+    }
+
+    .triad-card {
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .triad-card:hover,
+    .triad-card.active {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.26);
+      outline: 3px solid rgba(255, 255, 255, 0.54);
+    }
+
+    .triad-card h2 {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .vertex {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--soft);
+      margin-top: 44px;
+      line-height: 1.8;
+    }
+
+    .footer-note strong {
+      color: var(--muted);
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 820px) {
+      body { padding: 18px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .role-grid,
+      .domain-grid,
+      .application-grid,
+      .triad-grid,
+      .chips {
+        grid-template-columns: 1fr;
+      }
+      .detail-head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="topbar">
+      <a href="/">Practice Intuition</a>
+      <a href="https://practiceintuition.substack.com" target="_blank" rel="noopener">Read the Substack</a>
+    </nav>
+
+    <section class="hero">
+      <p class="eyebrow">Practice Intuition Framework</p>
+      <h1>Multidisciplinary Integration Framework</h1>
+      <p class="lead">
+        How ecological awareness, applied biomechanics, and cognitive neuromechanics create a more complete map of human behavior, systems, intelligence, and development.
+      </p>
+    </section>
+
+    <section class="triangle-wrap" aria-label="Three-domain integration triangle">
+      <svg viewBox="0 0 800 700" role="img">
+        <line x1="400" y1="100" x2="200" y2="500" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" opacity="0.45" />
+        <line x1="400" y1="100" x2="600" y2="500" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" opacity="0.45" />
+        <line x1="200" y1="500" x2="600" y2="500" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" opacity="0.45" />
+
+        <circle cx="400" cy="370" r="80" fill="#1e293b" stroke="#94a3b8" stroke-width="2" />
+        <text x="400" y="360" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">INTEGRATED</text>
+        <text x="400" y="385" text-anchor="middle" fill="#cbd5e1" font-size="14">HUMAN</text>
+        <text x="400" y="405" text-anchor="middle" fill="#cbd5e1" font-size="14">UNDERSTANDING</text>
+
+        <g class="node" data-field="neuromechanics">
+          <circle cx="400" cy="100" r="90" fill="#334155" />
+          <text class="node-label" x="400" y="95" text-anchor="middle">Cognitive</text>
+          <text class="node-label" x="400" y="115" text-anchor="middle">Neuromechanics</text>
+        </g>
+
+        <g class="node" data-field="biomechanics">
+          <circle cx="200" cy="500" r="90" fill="#334155" />
+          <text class="node-label" x="200" y="495" text-anchor="middle">Applied</text>
+          <text class="node-label" x="200" y="515" text-anchor="middle">Biomechanics</text>
+        </g>
+
+        <g class="node" data-field="ecology">
+          <circle cx="600" cy="500" r="90" fill="#334155" />
+          <text class="node-label" x="600" y="495" text-anchor="middle">Ecological</text>
+          <text class="node-label" x="600" y="515" text-anchor="middle">Awareness</text>
+        </g>
+
+        <text class="bridge" x="300" y="300" text-anchor="middle">Motor Control</text>
+        <text class="bridge" x="500" y="300" text-anchor="middle">Perception-Action</text>
+        <text class="bridge" x="400" y="540" text-anchor="middle">Movement-Environment</text>
+      </svg>
+    </section>
+
+    <section id="field-detail" class="panel detail hidden"></section>
+
+    <section>
+      <h2 class="section-title">Professional Applications</h2>
+      <div class="role-grid" id="role-grid"></div>
+    </section>
+
+    <section id="role-detail" class="panel role-detail hidden"></section>
+
+    <section>
+      <h2 class="section-title">Integration Frameworks</h2>
+      <div class="triad-grid" id="triad-grid"></div>
+    </section>
+
+    <section class="footer-note">
+      <strong>Three domains x Three intelligences x Three development paths</strong>
+      <span>"The same design principles appear across wildly different domains"</span><br />
+      <span>Click fields, roles, and frameworks to explore integration patterns.</span>
+    </section>
+  </main>
+
+  <script>
+    const fields = {
+      ecology: {
+        name: "Ecological Awareness",
+        icon: "Eye",
+        core: "Perception & Context",
+        colors: ["#22c55e", "#059669"],
+        description: "Understanding organism-environment relationships, affordances, and emergent possibilities",
+        keyAspects: ["Affordance perception", "Systems thinking", "Context sensitivity", "Temporal awareness", "Design philosophy"]
+      },
+      biomechanics: {
+        name: "Applied Biomechanics",
+        icon: "Move",
+        core: "Structure & Movement",
+        colors: ["#3b82f6", "#0891b2"],
+        description: "Physical principles governing body mechanics, load distribution, and functional movement",
+        keyAspects: ["Biotensegrity", "Movement patterns", "Structural integration", "Physical therapy", "Performance optimization"]
+      },
+      neuromechanics: {
+        name: "Cognitive Neuromechanics",
+        icon: "Mind",
+        core: "Control & Coordination",
+        colors: ["#8b5cf6", "#db2777"],
+        description: "Neural mechanisms coordinating motor function, cognition, and consciousness",
+        keyAspects: ["Neural coordination", "Motor control", "Cognitive processing", "Learning systems", "Consciousness models"]
+      }
+    };
+
+    const roles = {
+      systemsEngineer: {
+        name: "Systems Engineer / Designer",
+        icon: "Systems",
+        color: "#f59e0b",
+        tagline: "Building coherent systems across technical, human, and organizational layers",
+        integration: {
+          ecology: "Design for emergent affordances, context-aware systems, and perception-action coupling in dynamic environments.",
+          biomechanics: "Understand physical constraints, load distribution principles, structural requirements, and failure modes in embodied systems.",
+          neuromechanics: "Model cognitive load, learning curves, attention allocation, user coordination, and neural-motor integration patterns."
+        },
+        intelligenceApplication: "Leverage IQ for system architecture, EQ for stakeholder alignment, and KQ for embodied interaction design.",
+        developmentFocus: "Optimize physiological feedback loops, design for kinesthetic learning, and enable reflective user growth."
+      },
+      philosopher: {
+        name: "Philosopher",
+        icon: "Inquiry",
+        color: "#6366f1",
+        tagline: "Investigating consciousness, meaning, and the nature of embodied existence",
+        integration: {
+          ecology: "Explore perception-reality relationships, organism-environment unity, affordance ontology, and ecological phenomenology.",
+          biomechanics: "Investigate embodied cognition, physical grounding of thought, materiality of mind, and soma-psyche integration.",
+          neuromechanics: "Examine consciousness emergence, the qualia-quantia distinction, the mind-body problem, and neural correlates of experience."
+        },
+        intelligenceApplication: "Unite IQ for conceptual precision, EQ for empathetic understanding, and KQ for somatic wisdom.",
+        developmentFocus: "Examine the physiological basis of consciousness, movement as philosophical practice, and self-inquiry as development."
+      },
+      complexityScientist: {
+        name: "Complexity Scientist",
+        icon: "Complexity",
+        color: "#e11d48",
+        tagline: "Modeling emergence, adaptation, and scale-invariant coordination patterns",
+        integration: {
+          ecology: "Study scale-invariant patterns, multi-agent coordination, emergent affordances, and self-organizing system dynamics.",
+          biomechanics: "Analyze distributed load principles, redundancy architectures, adaptive structural response, and mechanical emergence.",
+          neuromechanics: "Model neural networks, synaptic plasticity, learning dynamics, collective intelligence, and cognitive phase transitions."
+        },
+        intelligenceApplication: "Apply IQ to mathematical modeling, EQ to social dynamics, and KQ to embodied system understanding.",
+        developmentFocus: "Track physiological markers of adaptation, measure kinesthetic learning curves, and model reflective feedback loops."
+      },
+      personalTrainer: {
+        name: "Personal Trainer / Movement Coach",
+        icon: "Coach",
+        color: "#14b8a6",
+        tagline: "Facilitating transformation through perception, movement, and integrated awareness",
+        integration: {
+          ecology: "Create supportive learning environments, perceive individual affordances, design constraints-led learning, and enable ecological exploration.",
+          biomechanics: "Optimize movement patterns, prevent compensatory dysfunction, restore structural integrity, and develop motor variability.",
+          neuromechanics: "Facilitate motor learning, build neuromuscular coordination, strengthen perception-action coupling, and enhance body schema."
+        },
+        intelligenceApplication: "Assess IQ for program design, apply EQ for coaching rapport, and use KQ for movement demonstration and cueing.",
+        developmentFocus: "Establish physiological baselines, teach kinesthetic literacy, and guide reflective practice and habit formation."
+      }
+    };
+
+    const triads = {
+      intelligence: {
+        name: "Intelligence Integration",
+        colors: ["#f97316", "#dc2626"],
+        vertices: {
+          iq: ["IQ - Cognitive Intelligence", "Pattern recognition, logical reasoning, abstract thinking, problem-solving"],
+          eq: ["EQ - Emotional Intelligence", "Social awareness, empathy, relationship management, emotional regulation"],
+          kq: ["KQ - Kinesthetic Intelligence", "Body awareness, movement literacy, proprioceptive precision, motor control"]
+        }
+      },
+      development: {
+        name: "Human Development",
+        colors: ["#06b6d4", "#2563eb"],
+        vertices: {
+          physiological: ["Physiological Hygiene", "Sleep architecture, circadian optimization, metabolic health, stress regulation"],
+          kinesthetic: ["Kinesthetic Literacy", "Movement vocabulary, body schema, spatial awareness, motor learning"],
+          reflective: ["Reflective Integration", "Self-inquiry, metacognition, habit formation, identity development"]
+        }
+      }
+    };
+
+    let activeField = null;
+    let activeRole = null;
+    let activeTriad = null;
+
+    const fieldDetail = document.getElementById("field-detail");
+    const roleDetail = document.getElementById("role-detail");
+    const roleGrid = document.getElementById("role-grid");
+    const triadGrid = document.getElementById("triad-grid");
+
+    function setGradientVars(element, colors, prefix = "detail") {
+      element.style.setProperty(`--${prefix}-a`, colors[0]);
+      element.style.setProperty(`--${prefix}-b`, colors[1]);
+    }
+
+    function renderFieldDetail() {
+      if (!activeField) {
+        fieldDetail.classList.add("hidden");
+        return;
+      }
+
+      const field = fields[activeField];
+      setGradientVars(fieldDetail, field.colors, "detail");
+      fieldDetail.classList.remove("hidden");
+      fieldDetail.innerHTML = `
+        <div class="detail-head">
+          <div class="detail-icon">${field.icon}</div>
+          <div>
+            <h2>${field.name}</h2>
+            <p class="core">${field.core}</p>
+            <p class="description">${field.description}</p>
+            <div class="chips">${field.keyAspects.map(aspect => `<div class="chip">${aspect}</div>`).join("")}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderRoles() {
+      roleGrid.innerHTML = Object.entries(roles).map(([key, role]) => `
+        <button class="role-btn ${activeRole === key ? "active" : ""}" data-role="${key}" style="background:${role.color}">
+          <span class="role-icon">${role.icon}</span>
+          <strong>${role.name}</strong>
+        </button>
+      `).join("");
+    }
+
+    function renderRoleDetail() {
+      if (!activeRole) {
+        roleDetail.classList.add("hidden");
+        return;
+      }
+
+      const role = roles[activeRole];
+      roleDetail.classList.remove("hidden");
+      roleDetail.innerHTML = `
+        <h2>${role.name}</h2>
+        <p class="tagline">${role.tagline}</p>
+        <h3 class="role-heading">Domain Integration</h3>
+        <div class="domain-grid">
+          ${Object.entries(role.integration).map(([key, text]) => {
+            const field = fields[key];
+            return `
+              <article class="domain-card" style="--card-a:${field.colors[0]};--card-b:${field.colors[1]}">
+                <h3>${field.name}</h3>
+                <p>${text}</p>
+              </article>
+            `;
+          }).join("")}
+        </div>
+        <div class="application-grid" style="margin-top:14px;">
+          <article class="application-card" style="--card-a:#f97316;--card-b:#dc2626">
+            <h3>IQ - EQ - KQ Integration</h3>
+            <p>${role.intelligenceApplication}</p>
+          </article>
+          <article class="application-card" style="--card-a:#06b6d4;--card-b:#2563eb">
+            <h3>Development Focus</h3>
+            <p>${role.developmentFocus}</p>
+          </article>
+        </div>
+      `;
+    }
+
+    function renderTriads() {
+      triadGrid.innerHTML = Object.entries(triads).map(([key, triad]) => `
+        <button class="triad-card ${activeTriad === key ? "active" : ""}" data-triad="${key}" style="--card-a:${triad.colors[0]};--card-b:${triad.colors[1]}">
+          <h2>${triad.name}</h2>
+          ${Object.entries(triad.vertices).map(([, vertex]) => `
+            <div class="vertex">
+              <h3>${vertex[0]}</h3>
+              <p>${vertex[1]}</p>
+            </div>
+          `).join("")}
+        </button>
+      `).join("");
+    }
+
+    function updateNodes() {
+      document.querySelectorAll(".node").forEach(node => {
+        const key = node.dataset.field;
+        node.classList.toggle("active", activeField === key);
+        node.querySelector("circle").setAttribute("fill", activeField === key ? fields[key].colors[0] : "#334155");
+      });
+    }
+
+    document.querySelectorAll(".node").forEach(node => {
+      node.addEventListener("click", () => {
+        const key = node.dataset.field;
+        activeField = activeField === key ? null : key;
+        updateNodes();
+        renderFieldDetail();
+      });
+    });
+
+    roleGrid.addEventListener("click", event => {
+      const button = event.target.closest("[data-role]");
+      if (!button) return;
+      activeRole = activeRole === button.dataset.role ? null : button.dataset.role;
+      renderRoles();
+      renderRoleDetail();
+    });
+
+    triadGrid.addEventListener("click", event => {
+      const button = event.target.closest("[data-triad]");
+      if (!button) return;
+      activeTriad = activeTriad === button.dataset.triad ? null : button.dataset.triad;
+      renderTriads();
+    });
+
+    renderRoles();
+    renderTriads();
+  </script>
+</body>
+</html>

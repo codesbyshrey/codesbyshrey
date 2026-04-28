@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humanoid Robotics & Embodied AI — Reference Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #161a22;
+    --border: #252c38;
+    --accent: #00e5c0;
+    --accent2: #ff5c5c;
+    --accent3: #7eb8ff;
+    --text: #d4dae6;
+    --muted: #6a7588;
+    --tag-bg: #1c2330;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 32px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+
+  header h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+
+  .card h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .card.wide {
+    grid-column: 1 / -1;
+  }
+
+  a {
+    color: var(--accent3);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  a:hover { text-decoration: underline; }
+
+  ul { list-style: none; }
+  ul li {
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  ul li:last-child { border-bottom: none; }
+
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: var(--muted);
+    margin: 2px 2px 2px 0;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .name {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .role {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* Post drafts */
+  .posts-section { margin-top: 28px; }
+
+  .posts-section h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+
+  .post-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+
+  .post p {
+    font-size: 13.5px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+  }
+
+  .word-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Humanoid Robotics &amp; Embodied AI — Reference</h1>
+  <p>Session: March 2026 · Topic batch #1</p>
+</header>
+
+<div class="grid">
+
+  <!-- LINKS -->
+  <div class="card wide">
+    <h2>🔗 Links &amp; Sources</h2>
+    <ul>
+      <li><a href="https://news.clemson.edu/bioengineering-ph-d-student-uses-baseball-tech-to-prevent-pitching-injuries-and-grow-analytics-group/">Clemson — Baseball tech for pitching injury prevention</a></li>
+      <li><a href="https://lnkd.in/eF9G7juk">UBC/Erasmus MC — Space-Time Balance Paper (Science Robotics)</a></li>
+      <li><a href="https://lnkd.in/egGZi7Yx">UBC News — Virtual Body-Swap Balance Article</a></li>
+      <li><a href="https://lnkd.in/eDpDjCGH">Strange Research — Humanoid Hand as Gating Constraint (Joy Yang)</a></li>
+      <li><a href="https://lnkd.in/ecA5NQpP">PointWorld-1B — Stanford &amp; NVIDIA 3D World Model</a></li>
+      <li><a href="https://lnkd.in/dNeHwzYr">tbai framework — GitHub</a></li>
+      <li><a href="https://lnkd.in/dXe4MXuF">tbai — additional link</a></li>
+      <li><a href="https://lnkd.in/guaKUBM9">Marker augmentation / pose estimation paper (ergonomics)</a></li>
+      <li><a href="https://lnkd.in/gAuQcZ8M">Andrew Ng — AI Hype &amp; the 18-year-old's dilemma (full text)</a></li>
+      <li><a href="https://lnkd.in/guxpQwBm">Sunday Robotics — Careers / Hiring</a></li>
+      <li><a href="https://lnkd.in/gihqhry4">BOA Performance Fit Lab — Biomechanics Internship</a></li>
+      <li><a href="https://lnkd.in/eP4TFczi">MOVE Center at KSU — Postdoc in Robotics &amp; Exoskeletons (Job ID: 292136)</a></li>
+      <li><a href="https://lnkd.in/gMdsCwBn">Haptic Grid Display Python Library — GitHub</a></li>
+    </ul>
+  </div>
+
+  <!-- INSTITUTIONS -->
+  <div class="card">
+    <h2>🏛 Institutions &amp; Programs</h2>
+    <ul>
+      <li><span class="name">CREATE</span> <span class="role">Center for Rehabilitation Engineering &amp; Assistive Technology</span></li>
+      <li><span class="name">MOVE Center</span> <span class="role">Kennesaw State University — Robotics &amp; Mobility Research</span></li>
+      <li><span class="name">RoMeLa</span> <span class="role">Robotics &amp; Mechanisms Lab (balloon robot / HRI)</span></li>
+      <li><span class="name">Robotic Systems Lab</span> <span class="role">ETH Zurich — tbai controllers</span></li>
+      <li><span class="name">University of British Columbia</span> <span class="role">Balance &amp; sensorimotor research</span></li>
+      <li><span class="name">Erasmus MC</span> <span class="role">Neurology / balance collaboration</span></li>
+      <li><span class="name">Stanford University &amp; NVIDIA</span> <span class="role">PointWorld-1B</span></li>
+      <li><span class="name">HFES</span> <span class="role">Human Factors &amp; Ergonomics Society — Healthcare Robotics Summit, NYC, Mar 22 2026</span></li>
+      <li><span class="name">Google DeepMind Accelerator: Robotics</span> <span class="role">3-month equity-free program for pre-seed embodied AI startups (EU). Apps: Feb 24–Mar 25. Info session: Mar 11</span></li>
+      <li><span class="name">BOA Performance Fit Lab</span> <span class="role">Biomechanics Internship (12-week, paid, summer)</span></li>
+    </ul>
+  </div>
+
+  <!-- COMPANIES & ROBOTS -->
+  <div class="card">
+    <h2>🤖 Companies &amp; Robots</h2>
+    <ul>
+      <li><span class="name">Boston Dynamics</span> <span class="role">Electric Atlas — RaaS ~$12.5k/mo; 2026 run → Hyundai &amp; Google</span></li>
+      <li><span class="name">Google DeepMind</span> <span class="role">Intelligence layer for Atlas</span></li>
+      <li><span class="name">Hyundai</span> <span class="role">First Atlas deployment — vehicle assembly</span></li>
+      <li><span class="name">Sunday Robotics</span> <span class="role">Home/consumer robots — hiring</span></li>
+      <li><span class="name">Skeletonics</span> <span class="role">10-ft unpowered exoskeleton frame</span></li>
+      <li><span class="name">ANYbotics</span> <span class="role">ANYmal B/C/D (tbai supported)</span></li>
+      <li><span class="name">Unitree Robotics</span> <span class="role">Go2, Go2W, G1 (tbai supported)</span></li>
+      <li><span class="name">Franka Robotics</span> <span class="role">Franka Emika arm (tbai)</span></li>
+    </ul>
+  </div>
+
+  <!-- PEOPLE TO CONNECT WITH -->
+  <div class="card">
+    <h2>👤 People to Network With</h2>
+    <ul>
+      <li><span class="name">Joy Yang</span> <span class="role">Strange Research Fellow — humanoid hand/grasping</span></li>
+      <li><span class="name">Paul Belzner</span> <span class="role">UBC — space-time balance paper co-author</span></li>
+      <li><span class="name">Calvin Kuo</span> <span class="role">UBC — balance robotics platform</span></li>
+      <li><span class="name">Jean-Sébastien Blouin</span> <span class="role">UBC — sensorimotor research</span></li>
+      <li><span class="name">Ali Taheri</span> <span class="role">Co-author, marker augmentation / pose estimation paper</span></li>
+      <li><span class="name">Dr. Seobin Choi</span> <span class="role">Co-author, ergonomic risk assessment paper</span></li>
+      <li><span class="name">Dr. Jay Kim</span> <span class="role">PhD advisor, occupational biomechanics</span></li>
+      <li><span class="name">Dror Kosowsky-Sachs</span> <span class="role">Autonomous chessboard / mechatronics project</span></li>
+      <li><span class="name">Adrian (surname unlisted)</span> <span class="role">Former Master's student — NeurIPS embodied AI poster</span></li>
+    </ul>
+  </div>
+
+  <!-- KEY THEMES / TAGS -->
+  <div class="card wide">
+    <h2>🏷 Key Themes &amp; Concepts</h2>
+    <div style="padding-top:4px;">
+      <span class="tag">crossing the chasm</span>
+      <span class="tag">exoskeletons vs exosuits</span>
+      <span class="tag">spine compression</span>
+      <span class="tag">musculoskeletal modeling</span>
+      <span class="tag">AI hype / AGI timeline</span>
+      <span class="tag">embodied AI</span>
+      <span class="tag">VLAs</span>
+      <span class="tag">world models</span>
+      <span class="tag">continual learning</span>
+      <span class="tag">RL for robotics</span>
+      <span class="tag">NeurIPS 2025</span>
+      <span class="tag">space-time balance</span>
+      <span class="tag">sensorimotor delay</span>
+      <span class="tag">bipedal locomotion</span>
+      <span class="tag">PointWorld-1B</span>
+      <span class="tag">tbai framework</span>
+      <span class="tag">open-source robotics</span>
+      <span class="tag">haptic grid displays</span>
+      <span class="tag">artificial muscle footwear</span>
+      <span class="tag">soft robotics</span>
+      <span class="tag">RaaS model</span>
+      <span class="tag">human-robot interaction</span>
+      <span class="tag">wearable robotics</span>
+      <span class="tag">pose estimation</span>
+      <span class="tag">ergonomics</span>
+      <span class="tag">dexterous manipulation</span>
+    </div>
+  </div>
+
+</div>
+
+<hr class="divider">
+
+<!-- POST DRAFTS -->
+<div class="posts-section">
+  <h2>✏️ Draft Posts — Add Your Personal Context</h2>
+
+  <div class="post">
+    <div class="post-label">Post 1 — Crossing the Chasm</div>
+    <p>Most people engage with new technology at one of two extremes: swept up in the hype before anything real exists, or cautiously adopting once it's already mainstream and the risk is gone.
+
+The middle is where things get real. And brutal.
+
+Humanoid robotics is squarely in that messy middle right now — high uncertainty, loud opinions from the outside, and founders navigating the actual complexity of turning a compelling demo into a reliable product.
+
+What I find genuinely fascinating isn't whether a particular vision succeeds on a given timeline. It's the journey: the gritty engineering tradeoffs, the business constraints, the gap between what works in the lab and what works on the floor.
+
+Every technology we now take for granted once looked "too early." The question worth asking: which ones in the chasm today actually make it across?
+
+[YOUR CONTEXT HERE — what gives you conviction?]</p>
+    <div class="word-count">~140 words</div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 2 — The Assumption That Just Got Flipped (Exoskeletons)</div>
+    <p>For years, the field assumed rigid back exoskeletons offload the spine more than soft exosuits. It made intuitive sense on paper — simple physics, mechanical leverage, perpendicular force application.
+
+One problem: no one had actually tested it.
+
+A new peer-reviewed study out of Germany just did. The finding? For most participants, the soft exosuit reduced spinal compression force more than the rigid device.
+
+This is science doing what it should — exposing assumptions baked into the literature before they calcified into design dogma.
+
+It also reinforces something I think about a lot: human biomechanics is rarely as tidy as our models. Muscle dynamics, movement patterns, and real-world mechanics routinely make intuition break down.
+
+The field is better for having this data. And better for being willing to be wrong.
+
+[ADD YOUR ANGLE — does this connect to your clinical or research experience?]</p>
+    <div class="word-count">~150 words</div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 3 — The Hand Problem</div>
+    <p>Humanoid robots can walk. Some can run. A few can do backflips.
+
+What they still can't do reliably: pick up a screwdriver.
+
+The hand — dexterous, contact-rich, force-sensitive manipulation — is now the gating constraint for the entire humanoid industry. Locomotion is largely a solved problem. Grasping isn't.
+
+This gap matters because most of the value in physical labor isn't in moving from point A to point B. It's in what you do when you get there.
+
+Until robots can reliably interact with the unstructured, irregular, unpredictable physical world through their hands, the commercial case stays narrow.
+
+[ADD YOUR TAKE — have you seen promising approaches? Does this connect to your work in wearable robotics or HRI?]</p>
+    <div class="word-count">~120 words</div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 4 — Hype Harm (AI + Robotics)</div>
+    <p>An 18-year-old recently wrote to a researcher asking if there was any point pursuing a career in AI — worried that by the time he graduated, the work would be done.
+
+That question stuck with me.
+
+Hype doesn't just mislead investors. It discourages the next generation of builders.
+
+The truth is more nuanced: modern AI is genuinely remarkable and genuinely limited. LLMs still require significant customization to perform well on specific tasks. Robots still struggle with manipulation. AGI — if it comes — is likely decades away.
+
+The gap between what AI can do in demos and what it can do reliably, at scale, in the messy real world is still enormous. And closing that gap is exactly the kind of work that needs people.
+
+Encourage the 18-year-olds. The hard problems are just getting started.
+
+[YOUR FRAMING — what would you say to students entering this space?]</p>
+    <div class="word-count">~155 words</div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 5 — NeurIPS 2025 / Embodied AI State of the Field</div>
+    <p>A few things stood out from the embodied AI work at NeurIPS 2025:
+
+Continual learning — the ability to actually learn from experience without forgetting — still largely doesn't work. That's a foundational gap.
+
+Imitation learning from teleoperation has plateaued, much like supervised fine-tuning on text. The field is increasingly looking to RL.
+
+World models are getting powerful, but manipulation (contact-rich tasks) remains far harder than locomotion or driving.
+
+And inference speed? No longer the bottleneck — new tokenization and caching approaches have largely solved it.
+
+The picture that emerges: locomotion is maturing fast. Manipulation, long-horizon planning, and real-world generalization are still wide open.
+
+That's not a reason for pessimism. It's a map of where the interesting work is.
+
+[ADD YOUR PERSPECTIVE — which of these threads connects to your research focus?]</p>
+    <div class="word-count">~140 words</div>
+  </div>
+
+</div>
+
+</body>
+</html>
