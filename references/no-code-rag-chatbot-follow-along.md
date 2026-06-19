@@ -14,6 +14,11 @@ This is a practical reference for building a retrieval-augmented generation chat
 
 Reference source: https://rag.productcompass.pm/
 
+Related local references:
+
+- [AI Agentic Infrastructure Reference](./codesbyshrey-digest-reference-pack/ai-agentic-infrastructure-reference.md)
+- [AI Builder / PM / FDE Skill Map](./codesbyshrey-digest-reference-pack/ai-builder-pm-fde-skill-map.md)
+
 ## What You Are Building
 
 A simple chatbot that can answer questions from a private document folder.
@@ -186,4 +191,3 @@ For portfolio or product work, describe:
 - Add a reranker.
 - Add file-type specific parsers.
 - Add dashboards for usage and failure cases.
-

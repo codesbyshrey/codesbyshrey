@@ -4,6 +4,13 @@ Purpose: AWS networking, resilience, deployment, monitoring, and cloud architect
 
 Source: `library-of-heavens-path/codesbyshrey/2026-04-23 codesbyshrey_notes_organized_digest.md`
 
+Related AWS practitioner references:
+
+- [AWS Developer Associate Exam Review](./aws-developer-associate-exam-review.md)
+- [AWS Cloud Practitioner Profile](./aws-cloud-practitioner-profile.md)
+- [AWS Cloud Practitioner Q/A Review](./aws-cloud-practitioner-qa-review.md)
+- [AWS IAM Reference](./aws-iam-reference.md)
+
 ## 30.06.2023 — AWS Cloud Practitioner Module 4: Networking Concepts
 
 ### Context

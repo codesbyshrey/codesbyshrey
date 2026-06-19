@@ -529,6 +529,121 @@ Prior interns/technologies:
 - Python.
 - CSS.
 
+### Extracted Spotlist AWS / Architecture Notes
+
+Source images:
+
+- `75A26B83-46DC-4FBF-8258-93038BF3D57D_1_105_c.jpeg`
+- `85AF09FC-B106-418E-B435-95D6C2B66174_1_105_c.jpeg`
+
+The AWS sketch appears to frame Spotlist as a client/expert service booking platform with a mobile app, static/media assets, API gateway routing, serverless functions, secrets, and operational reliability concerns.
+
+Possible request flow:
+
+- User app routes through Route 53 or an endpoint layer.
+- Static or media assets route through CDN-style delivery and Amazon S3.
+- Public assets are available to clients.
+- Private resources should stay on private IPs or behind authenticated access.
+- API endpoints route through API Gateway.
+- Lambda functions handle backend operations and access secrets.
+- Authentication may use an OAuth/OIDC-style provider such as Auth0.
+- Primary flows mentioned include onboarding, email, booking trackers, groups, regional failure handling, and failback after recovery.
+
+Architecture quality notes captured in the sketch:
+
+- Operational excellence.
+- Security.
+- Reliability.
+- Cost optimization.
+- Sustainability.
+
+These map cleanly to AWS Well-Architected thinking and should be useful for turning Spotlist into a work-experience architecture case study.
+
+### Extracted DevOps Pipeline Notes
+
+Pipeline sketch:
+
+- Planning.
+- Source.
+- Build/test.
+- Release.
+- Operate.
+- Monitor.
+- Ongoing improvement.
+- Frameworking / review.
+
+Tools and concepts listed:
+
+- Git / version control.
+- GitHub.
+- Jenkins as an open-source automation server.
+- Apache Tomcat as the server/runtime context.
+- Maven with a `pom.xml` for build automation.
+- Jira for bug tracking and agile project management.
+- Containerization during build/test.
+- Rollback / revert execution.
+- Configuration management.
+
+Practical interpretation:
+
+- The notes point toward a conventional CI/CD pipeline: track work in Jira, version code in GitHub, automate builds with Maven/Jenkins, package/deploy to an app server or cloud runtime, monitor operation, and maintain rollback paths.
+- For portfolio wording, this can be described as exposure to CI/CD architecture and startup engineering workflows, not necessarily ownership of every tool unless confirmed elsewhere.
+
+### Extracted Spotlist Design Flow Notes
+
+Date window captured in the design sketch:
+
+- June 19 to September 14, 2023.
+
+User-facing feature notes:
+
+- Work on figuring out user logout setup.
+- Users should be able to reset a forgotten password.
+- Default landing page should appear when opening the app.
+- Client login.
+- Expert login.
+- Clients can schedule on-demand services.
+- Services may be on-site or off-site.
+- Point system supports retention and product/service loyalty.
+- Users can gain points through bookings, tipping, purchasing, and similar platform activity.
+- Users can view expert profiles and portfolios.
+
+Possible user profile fields:
+
+- Name.
+- Pronouns.
+- Interests.
+- Bio or about section.
+- Portfolio / profile view.
+
+Product / admin notes:
+
+- Connect brands through APIs.
+- Ecommerce support.
+- Keep track of tips.
+- Admin UI related to traveling with a client.
+- Track cancellation fees and travel data.
+- Support profile and portfolio views with geographic or service-radius details.
+
+### Extracted Technology Stack Notes
+
+Technologies explicitly visible in the design sketch:
+
+- React Native.
+- Expo.
+- API integration.
+- Android Studio.
+- Django.
+- PostgreSQL.
+
+Likely architecture pattern:
+
+- React Native / Expo mobile frontend.
+- Django backend with REST APIs.
+- PostgreSQL database.
+- AWS-hosted API and asset infrastructure.
+- CI/CD tooling around GitHub, Jenkins, Maven, Tomcat, and Jira-style workflow.
+
 ### Digestible Interpretation
 
 This is a work-experience onboarding note and can be converted into a portfolio-experience record.
